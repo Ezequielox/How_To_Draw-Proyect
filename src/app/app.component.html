@@ -1,0 +1,91 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+
+<router-outlet></router-outlet>
+
+<div class="container">
+ 
+  <h1 style="margin-top: 25px;">
+    {{title}}
+  </h1>
+ 
+  <div class="row" style="margin-top: 25px;">
+    <div class="col-md-3">
+      <input type="text" class="form-control" [(ngModel)]="studentTitulo" placeholder="Titulo">
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" [(ngModel)]="studentURL" placeholder="URL">
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" [(ngModel)]="studentDescripcion" placeholder="Descripcion">
+    </div>
+    <div class="col-md-3">
+      <button type="button" (click)="CreateRecord()" [disabled]="!studentTitulo || !studentURL || !studentDescripcion" class="btn btn-primary">+
+        Crear Publicación</button>
+    </div>
+
+    <button type="button" (click)="hello()">Actualizar Database</button>
+  
+  </div>
+  <div class="row" style="margin-top: 25px;">
+    <div class="col-md-3">
+      <div class="card" style="width: 18rem;" *ngFor="let item of students">
+        <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
+          <h5 class="card-title">{{item.Titulo}}</h5>
+          <h5 class="card-title">{{item.URL}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Descripcion: {{item.Descripcion}} </h6>
+          <a href="#" class="card-link" (click)="EditRecord(item)">Editar  </a>
+          <a href="#" class="card-link" (click)="RemoveRecord(item.id)">Eliminar  </a>
+
+        <!-- VIDEOS PUBLICACIONES -->
+        <p>
+        <iframe width="560" height="315" [src]="getVideoIframe(item.URL)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </p>
+        <!--                     -->
+
+        </div>
+        <ng-template #elseBlock>
+          <div class="card-body">
+            <h5 class="card-title">Editar  </h5>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-12">
+                  <input type="text" class="form-control" [(ngModel)]="item.EditTitulo" placeholder="Editar Titulo">
+                </div>
+                <div class="col-md-12">
+                  <input type="text" class="form-control" [(ngModel)]="item.EditURL" placeholder="Editar URL ">
+                </div>
+                <div class="col-md-12">
+                  <input type="text" class="form-control" [(ngModel)]="item.EditDescripcion" placeholder="Editar Descripcion">
+                </div>
+              </div>
+            </div>
+ 
+            <a href="#" class="card-link" (click)="item.isEdit = false">Cancelar  </a>
+            <a href="#" class="card-link" (click)="UpdateRecord(item)">  Actualizar</a>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+ 
+
+</div>
+

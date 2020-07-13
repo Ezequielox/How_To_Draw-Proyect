@@ -1,0 +1,44 @@
+.login{
+    width: 20%;
+    height: 23%;
+    background-color: lightseagreen;
+    display: block;
+    font-family: Arial;
+    position: absolute;
+    left: 80%;
+    margin-top: 0px;
+    padding-left: 25px;
+}
+
+button{
+    box-shadow:inset 0px 1px 0px 0px #bee2f9;
+	background:linear-gradient(to bottom, #6cd6f0 5%, #5494d1 100%);
+	background-color:#6cd6f0;
+	border-radius:6px;
+	border:1px solid #3866a3;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #7cacde;
+}
+
+.text-center{
+    font-family: YR;
+    
+}
+
+
+@font-face
+{
+  font-family: 'YR';
+  src: url('YR.otf'); /* IE9 Compat Modes /
+  src: url('BK.eot?#iefix') format('embedded-opentype'), / IE6-IE8 /
+       url('BK.woff') format('woff'), / Modern Browsers /
+       url('BK.ttf')  format('truetype'), / Safari, Android, iOS /
+       url('BK.svg#svgFontName') format('svg'); / Legacy iOS */
+}
