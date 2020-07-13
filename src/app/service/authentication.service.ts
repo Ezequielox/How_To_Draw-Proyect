@@ -10,7 +10,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class AuthenticationService {
  // Crear una clase "rol"
-
+public usuario: firebase.User;
 
   constructor(
     public angularFireAuth: AngularFireAuth,
@@ -19,21 +19,22 @@ export class AuthenticationService {
   ) {
     
 
-     // this.angularFireAuth.authState.subscribe(userResponse => {
-      // if (userResponse){
+this.angularFireAuth.authState.subscribe(userResponse => {
+ if (userResponse){
         /* Se llama a la funcion "this.AppComponent.CreateRecordUsers()" para guardar el uid del usuario en una tabla de la BDD junto a un rol por defecto de "lector" */
 
         // localStorage.setItem('user', JSON.stringify(userResponse));
         // localStorage.setItem('user', JSON.stringify(userResponse));
         //Lo primero es buscar el usuario en firestore, si este existe deberia traer el rol. En caso de que no exista deberia crear el usuario en firestore deberia asignarle el rol de un usuario normal.
         // return this.firestore.collection('Usuarios/' + userResponse.uid);
-      
+      this.usuario = userResponse;
         
-      // } else {
-        // localStorage.setItem('user', null);
-        
-    // }
-  //  })
+       } 
+       else {
+     
+        this.usuario = null;
+    }
+  })
   }
  
   

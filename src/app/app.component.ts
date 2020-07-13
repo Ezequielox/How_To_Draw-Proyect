@@ -138,19 +138,16 @@ if (this.verificacion){
 
 createUsers(){
   let record = {};
-  record['UID'] = this.usuarioUID;
-  record['Rol'] = this.usuarioRol;
-  record['Nombre'] = this.usuarioName;
+  record['UID'] = this.authService.usuario.uid;
+  record['Rol'] = "lector";
+  record['Nombre'] = this.authService.usuario.displayName;
   this.crudService.create_NewUser(record).then(resp => {
-    this.usuarioUID = this.UID_user;
-    this.usuarioRol = "lector";
-    this.usuarioName = "Carlos";
     console.log(resp);
   })
     .catch(error => {
       console.log(error);
     });
-    
+
 }
 
 // PRUEBA
